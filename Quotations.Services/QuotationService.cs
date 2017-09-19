@@ -7,11 +7,8 @@ namespace Quotations.Services
 {
     public class QuotationService: IQuotationService
     {
-        private readonly INasdaqFileRepository fileRepository;
-
         public QuotationService(INasdaqFileRepository fileRepository)
         {
-            this.fileRepository = fileRepository;
         }
 
         public IEnumerable<Quotation> GetAll()
