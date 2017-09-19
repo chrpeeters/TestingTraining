@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using Moq;
 using Quotations.Domain;
@@ -86,6 +87,67 @@ namespace Quotations.Services.Tests
 
             // Assert
             action.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void GetAll_ReturnsEnumerationOfQuotations()
+        {
+            // Arrange
+            Quotation[] quotations = {
+                new Quotation
+                (
+                    "Company 1",
+                    123.45m,
+                    "USD"
+                ),
+                new Quotation
+                (
+                    "Company 2",
+                    67.8m,
+                    "EUR"
+                ),
+                new Quotation
+                (
+                    "Company 3",
+                    999m,
+                    "USD"
+                )
+            };
+
+            var fileRepository = new Mock<INasdaqFileRepository>();
+            fileRepository.Setup(rep => rep.ReadQuotations())
+                .Returns(quotations);
+
+            var sut = new QuotationService(fileRepository.Object);
+
+            // Act
+            var actual = sut.GetAll();
+
+            // Assert
+            actual.Should().NotBeEmpty()
+                .And.HaveSameCount(quotations)
+                .And.BeEquivalentTo(quotations)
+                .And.ContainItemsAssignableTo<Quotation>();
+        }
+
+        [Fact]
+        public void GetAll_ReturnsEmptyEnumerations()
+        {
+            // Arrange
+            Quotation[] quotations = { };
+
+            var fileRepository = new Mock<INasdaqFileRepository>();
+            fileRepository.Setup(rep => rep.ReadQuotations())
+                .Returns(quotations);
+
+            var sut = new QuotationService(fileRepository.Object);
+
+            // Act
+            var actual = sut.GetAll();
+
+            // Assert
+            actual.Should().BeEmpty()
+                .And.NotBeNull();
         }
     }
 }
