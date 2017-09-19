@@ -70,10 +70,28 @@
   <ItemGroup>
     <Compile Include="NasdaqFileRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestFile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\invalid-data.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\valid-data.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quotations.Domain\Quotations.Domain.csproj">
+      <Project>{CE1D9C5D-6609-4B5B-9E34-67CF4B31E793}</Project>
+      <Name>Quotations.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quotations.Repositories\Quotations.Repositories.csproj">
+      <Project>{144AFC66-60DF-4582-B654-24D7633E6250}</Project>
+      <Name>Quotations.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

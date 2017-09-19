@@ -1,7 +1,14 @@
-﻿namespace Quotations.Repositories
+﻿using System.Collections.Generic;
+using Quotations.Domain;
+using Quotations.Repositories.Contracts;
+
+namespace Quotations.Repositories
 {
-    public class NasdaqFileRepository
+    public class NasdaqFileRepository : INasdaqFileRepository
     {
-        
+        public IEnumerable<Quotation> ReadQuotations(string fullPath)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

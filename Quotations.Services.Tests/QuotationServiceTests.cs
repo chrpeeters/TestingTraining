@@ -60,7 +60,9 @@ namespace Quotations.Services.Tests
             Action action = () => sut.GetOneByCompanyName(notExistingCompanyName);
 
             // Assert
-            action.ShouldThrow<CompanyNotFoundException>();
+            action.ShouldThrow<CompanyNotFoundException>()
+                .And.NotFoundCompanyName.Should().Be(notExistingCompanyName);
+
         }
 
         [Fact]
