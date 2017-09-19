@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\INasdaqFileRepository.cs" />
+    <Compile Include="NasdaqFileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quotations.Domain\Quotations.Domain.csproj">
+      <Project>{CE1D9C5D-6609-4B5B-9E34-67CF4B31E793}</Project>
+      <Name>Quotations.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

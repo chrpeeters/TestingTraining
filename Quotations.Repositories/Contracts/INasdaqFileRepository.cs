@@ -1,7 +1,10 @@
-﻿namespace Quotations.Repositories.Contracts
+﻿using System.Collections.Generic;
+using Quotations.Domain;
+
+namespace Quotations.Repositories.Contracts
 {
     public interface INasdaqFileRepository
     {
-        
+        IEnumerable<Quotation> ReadQuotations();
     }
 }
