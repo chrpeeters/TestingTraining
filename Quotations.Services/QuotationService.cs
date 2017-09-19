@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Quotations.Domain;
+using Quotations.Domain.Excpetions;
 using Quotations.Repositories.Contracts;
 using Quotations.Services.Contracts;
 
 namespace Quotations.Services
 {
-    public class QuotationService: IQuotationService
+    public class QuotationService : IQuotationService
     {
         private readonly INasdaqFileRepository fileRepository;
 
@@ -16,12 +19,21 @@ namespace Quotations.Services
 
         public IEnumerable<Quotation> GetAll()
         {
-            throw new System.NotImplementedException();
+            return fileRepository.ReadQuotations();
         }
 
         public Quotation GetOneByCompanyName(string companyName)
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(companyName))
+                throw new ArgumentNullException(nameof(companyName));
+
+            var quotation = fileRepository.ReadQuotations()
+                .SingleOrDefault(q => q.CompanyName == companyName);
+
+            if (quotation == null)
+                throw new CompanyNotFoundException();
+
+            return quotation;
         }
     }
 }
