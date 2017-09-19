@@ -6,7 +6,7 @@ namespace Quotations.Repositories
 {
     public class NasdaqFileRepository : INasdaqFileRepository
     {
-        public IEnumerable<Quotation> ReadQuotations()
+        public IEnumerable<Quotation> ReadQuotations(string fullPath)
         {
             throw new System.NotImplementedException();
         }

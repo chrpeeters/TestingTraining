@@ -5,6 +5,6 @@ namespace Quotations.Repositories.Contracts
 {
     public interface INasdaqFileRepository
     {
-        IEnumerable<Quotation> ReadQuotations();
+        IEnumerable<Quotation> ReadQuotations(string fullPath);
     }
 }
