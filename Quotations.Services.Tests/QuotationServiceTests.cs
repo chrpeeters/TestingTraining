@@ -24,7 +24,7 @@ namespace Quotations.Services.Tests
             );
 
             var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations())
+            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(new[] { quotation });
 
             var sut = new QuotationService(fileRepository.Object);
@@ -51,7 +51,7 @@ namespace Quotations.Services.Tests
             );
 
             var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations())
+            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
             .Returns(new[] { quotation });
 
             var sut = new QuotationService(fileRepository.Object);
@@ -117,7 +117,7 @@ namespace Quotations.Services.Tests
             };
 
             var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations())
+            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(quotations);
 
             var sut = new QuotationService(fileRepository.Object);
@@ -139,7 +139,7 @@ namespace Quotations.Services.Tests
             Quotation[] quotations = { };
 
             var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations())
+            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(quotations);
 
             var sut = new QuotationService(fileRepository.Object);
