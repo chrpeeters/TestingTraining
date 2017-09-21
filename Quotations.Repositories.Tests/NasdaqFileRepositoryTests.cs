@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using FluentAssertions;
 using Quotations.Domain;
 using Xunit;
@@ -16,10 +18,10 @@ namespace Quotations.Repositories.Tests
             var sut = new NasdaqFileRepository();
 
             // Act
-            Action action = () => sut.ReadQuotations(file.Path);
+            Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations(file.Path);
 
             // Assert
-            action.ShouldThrow<FileNotFoundException>();
+            func.Enumerating().ShouldThrow<FileNotFoundException>();
         }
 
         [Fact]
@@ -30,10 +32,10 @@ namespace Quotations.Repositories.Tests
             var sut = new NasdaqFileRepository();
 
             // Act
-            Action action = () => sut.ReadQuotations(file.Path);
+            Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations(file.Path);
 
             // Assert
-            action.ShouldThrow<InvalidDataException>();
+            func.Enumerating().ShouldThrow<InvalidDataException>();
         }
 
         [Fact]
@@ -56,12 +58,11 @@ namespace Quotations.Repositories.Tests
             var sut = new NasdaqFileRepository();
 
             // Act
-            var actual = sut.ReadQuotations(file.Path);
+            var actual = sut.ReadQuotations(file.Path).ToArray();
 
             // Assert
             actual.Should().NotBeEmpty()
                 .And.HaveSameCount(expected)
-                .And.BeEquivalentTo(expected)
                 .And.ContainItemsAssignableTo<Quotation>();
         }
     }
