@@ -7,7 +7,7 @@ namespace Quotations.Services
 {
     public class QuotationService: IQuotationService
     {
-        public QuotationService(INasdaqFileRepository fileRepository)
+        public QuotationService(INasdaqRepository nasdaqRepository)
         {
         }
 
