@@ -7,7 +7,7 @@ using Quotations.Repositories.Contracts;
 
 namespace Quotations.Repositories
 {
-    public class NasdaqFileRepository : INasdaqFileRepository
+    public class NasdaqFileRepository : INasdaqRepository
     {
         public IEnumerable<Quotation> ReadQuotations(string fullPath)
         {

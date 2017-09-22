@@ -23,11 +23,11 @@ namespace Quotations.Services.Tests
                 "USD"
             );
 
-            var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            var nasdaqRepository = new Mock<INasdaqRepository>();
+            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(new[] { quotation });
 
-            var sut = new QuotationService(fileRepository.Object);
+            var sut = new QuotationService(nasdaqRepository.Object);
 
             // Act
             var actual = sut.GetOneByCompanyName(companyName);
@@ -50,11 +50,11 @@ namespace Quotations.Services.Tests
                 "USD"
             );
 
-            var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            var nasdaqRepository = new Mock<INasdaqRepository>();
+            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
             .Returns(new[] { quotation });
 
-            var sut = new QuotationService(fileRepository.Object);
+            var sut = new QuotationService(nasdaqRepository.Object);
 
             // Act
             Action action = () => sut.GetOneByCompanyName(notExistingCompanyName);
@@ -116,11 +116,11 @@ namespace Quotations.Services.Tests
                 )
             };
 
-            var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            var nasdaqRepository = new Mock<INasdaqRepository>();
+            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(quotations);
 
-            var sut = new QuotationService(fileRepository.Object);
+            var sut = new QuotationService(nasdaqRepository.Object);
 
             // Act
             var actual = sut.GetAll();
@@ -138,11 +138,11 @@ namespace Quotations.Services.Tests
             // Arrange
             Quotation[] quotations = { };
 
-            var fileRepository = new Mock<INasdaqFileRepository>();
-            fileRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            var nasdaqRepository = new Mock<INasdaqRepository>();
+            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(quotations);
 
-            var sut = new QuotationService(fileRepository.Object);
+            var sut = new QuotationService(nasdaqRepository.Object);
 
             // Act
             var actual = sut.GetAll();
