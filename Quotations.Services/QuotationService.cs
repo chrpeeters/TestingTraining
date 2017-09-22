@@ -13,7 +13,7 @@ namespace Quotations.Services
         private readonly INasdaqFileRepository fileRepository;
         private const string Path = "where the file should be...";
 
-        public QuotationService(INasdaqFileRepository fileRepository)
+        public QuotationService(INasdaqRepository nasdaqRepository)
         {
             this.fileRepository = fileRepository;
         }
