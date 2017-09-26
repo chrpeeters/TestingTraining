@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{144AFC66-60DF-4582-B654-24D7633E6250}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quotations.Repositories</RootNamespace>
-    <AssemblyName>Quotations.Repositories</AssemblyName>
+    <ProjectGuid>{26ED3757-E60D-4403-B9C2-0C37A15BBEFB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Quotations.Presentations.ConsoleUI</RootNamespace>
+    <AssemblyName>Quotations.Presentations.ConsoleUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,15 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IQuotationRepository.cs" />
-    <Compile Include="NasdaqFileRepository.cs" />
-    <Compile Include="NikkeiHardcordedRepository.cs" />
+    <Compile Include="Views\Pages\HomePage.cs" />
+    <Compile Include="Views\Pages\DisplayPage.cs" />
+    <Compile Include="Views\Pages\ExitPage.cs" />
+    <Compile Include="Views\IPage.cs" />
+    <Compile Include="Views\IPageFactory.cs" />
+    <Compile Include="Views\Page.cs" />
+    <Compile Include="Views\PageFactory.cs" />
+    <Compile Include="Views\Pages\UnknownPage.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Readers\IReader.cs" />
+    <Compile Include="Readers\Reader.cs" />
+    <Compile Include="Writters\IWritter.cs" />
+    <Compile Include="Writters\Writter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Quotations.Domain\Quotations.Domain.csproj">
-      <Project>{CE1D9C5D-6609-4B5B-9E34-67CF4B31E793}</Project>
-      <Name>Quotations.Domain</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quotations.Services\Quotations.Services.csproj">
+      <Project>{6A68E49F-1FFE-425C-A5E0-C4D445B31DD0}</Project>
+      <Name>Quotations.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

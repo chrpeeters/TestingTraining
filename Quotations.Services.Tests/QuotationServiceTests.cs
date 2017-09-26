@@ -23,7 +23,7 @@ namespace Quotations.Services.Tests
                 "USD"
             );
 
-            var nasdaqRepository = new Mock<INasdaqRepository>();
+            var nasdaqRepository = new Mock<IQuotationRepository>();
             nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(new[] { quotation });
 
@@ -50,7 +50,7 @@ namespace Quotations.Services.Tests
                 "USD"
             );
 
-            var nasdaqRepository = new Mock<INasdaqRepository>();
+            var nasdaqRepository = new Mock<IQuotationRepository>();
             nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
             .Returns(new[] { quotation });
 
@@ -116,7 +116,7 @@ namespace Quotations.Services.Tests
                 )
             };
 
-            var nasdaqRepository = new Mock<INasdaqRepository>();
+            var nasdaqRepository = new Mock<IQuotationRepository>();
             nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(quotations);
 
@@ -138,7 +138,7 @@ namespace Quotations.Services.Tests
             // Arrange
             Quotation[] quotations = { };
 
-            var nasdaqRepository = new Mock<INasdaqRepository>();
+            var nasdaqRepository = new Mock<IQuotationRepository>();
             nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
                 .Returns(quotations);
 

@@ -3,8 +3,8 @@ using Quotations.Domain;
 
 namespace Quotations.Repositories.Contracts
 {
-    public interface INasdaqRepository
+    public interface IQuotationRepository
     {
-        IEnumerable<Quotation> ReadQuotations(string fullPath);
+        IEnumerable<Quotation> ReadQuotations();
     }
 }

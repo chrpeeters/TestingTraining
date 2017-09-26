@@ -10,17 +10,17 @@ namespace Quotations.Services
 {
     public class QuotationService : IQuotationService
     {
-        private readonly INasdaqRepository nasdaqRepository;
+        private readonly IQuotationRepository quotationRepository;
         private const string Path = "where the file should be...";
 
-        public QuotationService(INasdaqRepository nasdaqRepository)
+        public QuotationService(IQuotationRepository quotationRepository)
         {
-            this.nasdaqRepository = nasdaqRepository;
+            this.quotationRepository = quotationRepository;
         }
 
         public IEnumerable<Quotation> GetAll()
         {
-            return nasdaqRepository.ReadQuotations(Path);
+            return quotationRepository.ReadQuotations();
         }
 
         public Quotation GetOneByCompanyName(string companyName)
@@ -28,7 +28,7 @@ namespace Quotations.Services
             if (string.IsNullOrEmpty(companyName))
                 throw new ArgumentNullException(nameof(companyName));
 
-            var quotation = nasdaqRepository.ReadQuotations(Path)
+            var quotation = quotationRepository.ReadQuotations()
                 .SingleOrDefault(q => q.CompanyName == companyName);
 
             if (quotation == null)
