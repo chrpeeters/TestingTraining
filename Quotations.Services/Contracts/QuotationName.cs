@@ -1,4 +1,4 @@
-﻿namespace Quotations.Services
+﻿namespace Quotations.Services.Contracts
 {
     public enum QuotationName
     {

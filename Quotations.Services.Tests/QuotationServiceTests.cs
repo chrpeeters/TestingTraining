@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using FluentAssertions;
 using Moq;
 using Quotations.Domain;
@@ -24,7 +23,7 @@ namespace Quotations.Services.Tests
             );
 
             var nasdaqRepository = new Mock<IQuotationRepository>();
-            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            nasdaqRepository.Setup(rep => rep.ReadQuotations())
                 .Returns(new[] { quotation });
 
             var sut = new QuotationService(nasdaqRepository.Object);
@@ -51,7 +50,7 @@ namespace Quotations.Services.Tests
             );
 
             var nasdaqRepository = new Mock<IQuotationRepository>();
-            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            nasdaqRepository.Setup(rep => rep.ReadQuotations())
             .Returns(new[] { quotation });
 
             var sut = new QuotationService(nasdaqRepository.Object);
@@ -117,7 +116,7 @@ namespace Quotations.Services.Tests
             };
 
             var nasdaqRepository = new Mock<IQuotationRepository>();
-            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            nasdaqRepository.Setup(rep => rep.ReadQuotations())
                 .Returns(quotations);
 
             var sut = new QuotationService(nasdaqRepository.Object);
@@ -139,7 +138,7 @@ namespace Quotations.Services.Tests
             Quotation[] quotations = { };
 
             var nasdaqRepository = new Mock<IQuotationRepository>();
-            nasdaqRepository.Setup(rep => rep.ReadQuotations(It.IsAny<string>()))
+            nasdaqRepository.Setup(rep => rep.ReadQuotations())
                 .Returns(quotations);
 
             var sut = new QuotationService(nasdaqRepository.Object);

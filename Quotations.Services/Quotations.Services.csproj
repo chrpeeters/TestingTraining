@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IQuotationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuotationName.cs" />
+    <Compile Include="Contracts\QuotationName.cs" />
     <Compile Include="QuotationService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -15,10 +15,10 @@ namespace Quotations.Repositories.Tests
         {
             var file = new TestFile("", "unknown-file.csv");
 
-            var sut = new NasdaqFileRepository();
+            var sut = new NasdaqFileRepository(file.Path);
 
             // Act
-            Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations(file.Path);
+            Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations();
 
             // Assert
             func.Enumerating().ShouldThrow<FileNotFoundException>();
@@ -29,10 +29,10 @@ namespace Quotations.Repositories.Tests
         {
             var file = new TestFile("", "invalid-data.csv");
 
-            var sut = new NasdaqFileRepository();
+            var sut = new NasdaqFileRepository(file.Path);
 
             // Act
-            Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations(file.Path);
+            Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations();
 
             // Assert
             func.Enumerating().ShouldThrow<InvalidDataException>();
@@ -55,10 +55,10 @@ namespace Quotations.Repositories.Tests
 
             var file = new TestFile("", "valid-data.csv");
 
-            var sut = new NasdaqFileRepository();
+            var sut = new NasdaqFileRepository(file.Path);
 
             // Act
-            var actual = sut.ReadQuotations(file.Path).ToArray();
+            var actual = sut.ReadQuotations().ToArray();
 
             // Assert
             actual.Should().NotBeEmpty()

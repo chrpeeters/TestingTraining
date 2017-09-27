@@ -9,12 +9,12 @@ namespace Quotations.Repositories
         public IEnumerable<Quotation> ReadQuotations()
         {
             return new List<Quotation>
-          {
-             new Quotation("ingenico japan", 87, "EUR"),
-             new Quotation("Toyota", 1, "Yen"),
-             new Quotation("Sony", 45654, "Yen"),
-             new Quotation("Nissan", 41, "Yen"),
-          };
+            {
+                new Quotation("Ingenico japan", 87.12m, "EUR"),
+                new Quotation("Toyota", 12.8m, "YEN"),
+                new Quotation("Sony", 456.5m, "YEN"),
+                new Quotation("Nissan", 41, "YEN"),
+            };
         }
     }
 }

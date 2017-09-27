@@ -1,6 +1,6 @@
 ﻿using Quotations.Presentations.ConsoleUI.Readers;
 using Quotations.Presentations.ConsoleUI.Writters;
-using Quotations.Services;
+using Quotations.Services.Contracts;
 
 namespace Quotations.Presentations.ConsoleUI.Views.Pages
 {

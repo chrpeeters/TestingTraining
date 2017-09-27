@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bel20FakeApiRepository.cs" />
     <Compile Include="Contracts\IQuotationRepository.cs" />
     <Compile Include="NasdaqFileRepository.cs" />
     <Compile Include="NikkeiHardcordedRepository.cs" />
