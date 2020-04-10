@@ -21,7 +21,7 @@ namespace Quotations.Repositories.Tests
             Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations(file.Path);
 
             // Assert
-            func.Enumerating().ShouldThrow<FileNotFoundException>();
+            func.Enumerating().Should().Throw<FileNotFoundException>();
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Quotations.Repositories.Tests
             Func<IEnumerable<Quotation>> func = () => sut.ReadQuotations(file.Path);
 
             // Assert
-            func.Enumerating().ShouldThrow<InvalidDataException>();
+            func.Enumerating().Should().Throw<InvalidDataException>();
         }
 
         [Fact]

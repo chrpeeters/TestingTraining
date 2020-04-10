@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Quotations.Domain.Excpetions
+namespace Quotations.Domain.Exceptions
 {
     public class CompanyNotFoundException : Exception
     {

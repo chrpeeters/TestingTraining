@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Moq;
 using Quotations.Domain;
-using Quotations.Domain.Excpetions;
+using Quotations.Domain.Exceptions;
 using Quotations.Repositories.Contracts;
 using Xunit;
 
@@ -34,7 +34,7 @@ namespace Quotations.Services.Tests
 
             // Assert
             actual.Should().NotBeNull();
-            actual.ShouldBeEquivalentTo(quotation);
+            actual.Should().BeEquivalentTo(quotation);
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Quotations.Services.Tests
             Action action = () => sut.GetOneByCompanyName(notExistingCompanyName);
 
             // Assert
-            action.ShouldThrow<CompanyNotFoundException>()
+            action.Should().Throw<CompanyNotFoundException>()
                 .And.NotFoundCompanyName.Should().Be(notExistingCompanyName);
 
         }
@@ -75,7 +75,7 @@ namespace Quotations.Services.Tests
             Action action = () => sut.GetOneByCompanyName(null);
 
             // Assert
-            action.ShouldThrow<ArgumentNullException>();
+            action.Should().Throw<ArgumentNullException>();
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace Quotations.Services.Tests
             Action action = () => sut.GetOneByCompanyName(string.Empty);
 
             // Assert
-            action.ShouldThrow<ArgumentNullException>();
+            action.Should().Throw<ArgumentNullException>();
         }
 
         [Fact]

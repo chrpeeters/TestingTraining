@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Quotations.Domain;
-using Quotations.Domain.Excpetions;
+using Quotations.Domain.Exceptions;
 using Quotations.Repositories.Contracts;
 using Quotations.Services.Contracts;
 
