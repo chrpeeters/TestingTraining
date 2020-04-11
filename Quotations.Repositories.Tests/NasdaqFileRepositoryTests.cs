@@ -64,6 +64,7 @@ namespace Quotations.Repositories.Tests
             actual.Should().NotBeEmpty()
                 .And.HaveSameCount(expected)
                 .And.ContainItemsAssignableTo<Quotation>();
+            actual.Should().BeEquivalentTo(expected);
         }
     }
 }
